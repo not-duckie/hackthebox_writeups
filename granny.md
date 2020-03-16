@@ -49,7 +49,7 @@ The public PUT allows us the to upload html files. Thus the following request al
 
 ### Note
 
-I had take the shell.aspx file from [here]([https://raw.githubusercontent.com/xl7dev/WebShell/master/Aspx/ASPX%20Shell.aspx](https://raw.githubusercontent.com/xl7dev/WebShell/master/Aspx/ASPX Shell.aspx))
+I had take the shell.aspx file from [here](https://raw.githubusercontent.com/xl7dev/WebShell/master/Aspx/ASPX Shell.aspx)
 
 We are trying to upload aspx files not php files to gain **RCE** as this is windows box and server is WebDAV so safe guess is php is not installed on the box and will not be executed by the server.
 
