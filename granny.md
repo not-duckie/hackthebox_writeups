@@ -247,7 +247,7 @@ Connection: close
 
 Now if we go to http://10.10.10.15/shell.aspx we should get our shell. As shown below.
 
-![We got our shell](/home/duckie/Pictures/Hackthebox/granny/file_upload_granny.png)
+![We got our shell](/home/duckie/Documents/htb/hackthebox_writeups/Hackthebox/granny/file_upload_granny.png)
 
 With the help of the msfvenom we will get out meterpreter shell now. The following command will create a staged meterpreter payload in aspx format.
 
@@ -271,6 +271,6 @@ make a get request to http://10.10.10.15/nice.aspx and you should a meterpreter 
 
 We have the SeImpersonateToken available to us so the logical path is to Juicy Potato, Dirty Potato or some potato this box (too many potato exploits, smh). But they did'nt worked for me. With Fuck-Ton of searching around gave me this exploit **ms14_070_tcpip_ioctl** , so i ran up the msf exploit for this and it gave me a system shell. yay!
 
-![proof.txt](/home/duckie/Pictures/Hackthebox/granny/granny_proof.png)
+![proof.txt](/home/duckie/Documents/htb/hackthebox_writeups/Hackthebox/granny/granny_proof.png)
 
 So that was the granny box, i am doing all the OSCP similar boxes on the hackthebox and will be writing stuff on them.
