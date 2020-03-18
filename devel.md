@@ -63,5 +63,3 @@ Upgraded the RCE to a full meterpreter shell with hat manual exploit. found this
 Ran Sherlock.ps1 to find relevant exploits, found MS15-051 to be working to give root exploit. Used binary available from [here](https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS15-051) . Which gave us the system shell.
 
 ![proof](images/devel/proof.png)
-
-That  it, wow!
